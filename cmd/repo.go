@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"davidallendj/gitman/util"
 	"fmt"
 
 	log "github.com/sirupsen/logrus"
@@ -17,7 +18,9 @@ var repoCmd = &cobra.Command{
 	Short: "Manage repositories",
 	Long:  "",
 	Run: func(cmd *cobra.Command, args []string) {
-
+		if len(args) == 0 {
+			util.PrintMap(Config.Repositories)
+		}
 	},
 }
 
@@ -29,7 +32,7 @@ func init() {
 		Run: func(cmd *cobra.Command, args []string) {
 			// Check for at least two args (name and path)
 			if len(args) < 2 {
-				log.Errorf("could not add repository")
+				log.Errorf("could not add repository\n")
 				return
 			}
 

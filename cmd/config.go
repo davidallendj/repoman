@@ -12,7 +12,7 @@ var configCmd = &cobra.Command{
 	Long:  "",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
-			fmt.Printf("%v\n", config)
+			fmt.Printf("%v\n", Config)
 		}
 	},
 }

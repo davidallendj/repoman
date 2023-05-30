@@ -1,4 +1,4 @@
-# Git Repo Manager (gitman)
+# Git Repository Manager (gitman)
 
 Having trouble updating multiple git repositories? Then try using `gitman`! This tool was created specifically for calling git commands for multiple repos. For example, let's say we have a collection of repositories that need to be updated:
 
@@ -19,7 +19,7 @@ gitman command add update "./update-script.sh"  # will overwrite previous
 ```
 Specify a repo group and run the command or call exec to run any command:
 ```bash
-gitman command run update
-gitman command exec "git pull"
+gitman run update
+gitman exec "git pull"
 ```
 This will run git pull for all the repositories in the "example" repo group. In a future, this will be capable of running in parallel using go-routines and specifying a `--jobs` optional parameter.
