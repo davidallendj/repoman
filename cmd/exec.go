@@ -35,6 +35,6 @@ var execCmd = &cobra.Command{
 }
 
 func init() {
-	execCmd.Flags().StringArrayVar(&Groups, "groups", util.GetKeys(Config.Repositories), "Set the groups of repositories")
+	execCmd.Flags().StringArrayVar(&Repositories, "repos", util.GetKeys(Config.Repositories), "Set the groups of repositories")
 	rootCmd.AddCommand(execCmd)
 }

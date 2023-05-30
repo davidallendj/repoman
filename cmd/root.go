@@ -15,8 +15,8 @@ type ConfigT struct {
 }
 
 var (
-	Config ConfigT
-	Groups []string
+	Config       ConfigT
+	Repositories []string
 )
 
 var rootCmd = &cobra.Command{

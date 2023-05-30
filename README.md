@@ -1,25 +1,33 @@
 # Git Repository Manager (gitman)
 
-Having trouble updating multiple git repositories? Then try using `gitman`! This tool was created specifically for calling git commands for multiple repos. For example, let's say we have a collection of repositories that need to be updated:
+Gitman is a tool created specifically for updating multiple git repositories with a single command. For example, let's say we have a collection of git repositories that need to be updated:
 
 ```bash
-├── coolprojectfromgithub
+├── mycoolprojectfromgithub
 ├── gdpm
-└── myrepo1
+└── repo1
 ```
-With `gitman`, set a reference to these repositories by using `gitman repo add` command, then provide a group name and collection of paths:
+With `gitman`, we can set a reference to these repositories by using `gitman repo add` command, then provide a name and path:
 
 ```bash
-gitman repo add example ./coolprojectfromgithub ./gdpm ./myrepo1
+gitman repo add coolprojectfromgithub path/to/mycoolprojectfromgithub
+gitman repo add gdpm path/to/gdpm
+gitman repo add repo1 path/to/repo1
 ```
 Next, you can add command aliases to call using the `gitman command add` command:
 ```bash
 gitman command add update "git pull"
-gitman command add update "./update-script.sh"  # will overwrite previous
+gitman command add update "./update-script.sh"  # will overwrite previous add
 ```
-Specify a repo group and run the command or call exec to run any command:
+Finally, run a command by calling an alias define with the `gitman repo add` command. Repositories can be specified with the `--repos` flag. Otherwise, the command will run for all repositories added.
 ```bash
-gitman run update
-gitman exec "git pull"
+gitman run update							# update all repos
+gitman run --repos gdpm,repo1 update update	# only update gdpm and repo1
 ```
-This will run git pull for all the repositories in the "example" repo group. In a future, this will be capable of running in parallel using go-routines and specifying a `--jobs` optional parameter.
+You can already run arbitrary commands using `exec` instead.
+```bash
+gitman exec "git pull" --repos coolprojectfromgithub
+```
+This will run `git pull` only for the repositories specified. In a future, this will be capable of running in parallel using goroutines and specifying a `--jobs` optional parameter.
+
+When `gitman` is ran the first time, a `config.yaml` file will be created in the `$HOME/.config/gitman` directory. This file can be modified directly to add more commands and repositories.

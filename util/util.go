@@ -4,7 +4,7 @@ import "fmt"
 
 func GetKeys(m map[string]string) (ks []string) {
 	var keys []string
-	for key, _ := range m {
+	for key := range m {
 		keys = append(keys, key)
 	}
 	return keys
