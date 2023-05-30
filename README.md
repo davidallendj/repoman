@@ -24,11 +24,11 @@ Finally, run a command by calling an alias define with the `gitman repo add` com
 gitman run update							# update all repos
 gitman run --repos gdpm,repo1 update update	# only update gdpm and repo1
 ```
-You can already run arbitrary commands using `exec` instead.
+You can execute arbitrary commands using the `exec` command.
 ```bash
 gitman exec "git pull" --repos coolprojectfromgithub
 ```
-This will run `git pull` only for the repositories specified. In a future, this will be capable of running in parallel using goroutines and specifying a `--jobs` optional parameter.
+This will run `git pull` only for the repositories specified. In a future, this will be capable of running in parallel using goroutines and specifying a `--jobs` flag.
 
 When `gitman` is ran the first time, a `config.yaml` file will be created in the `$HOME/.config/gitman` directory. This file can be modified directly to add more commands and repositories.
 
