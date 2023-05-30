@@ -31,3 +31,13 @@ gitman exec "git pull" --repos coolprojectfromgithub
 This will run `git pull` only for the repositories specified. In a future, this will be capable of running in parallel using goroutines and specifying a `--jobs` optional parameter.
 
 When `gitman` is ran the first time, a `config.yaml` file will be created in the `$HOME/.config/gitman` directory. This file can be modified directly to add more commands and repositories.
+
+
+## Building
+
+To build the project, just use Go and build: 
+
+```bash
+go mod tidy
+go build
+```
