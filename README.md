@@ -41,3 +41,7 @@ To build the project, just use Go and build:
 go mod tidy
 go build
 ```
+
+## Experimental Vlang version
+
+Check out [the version written in V](experimental/README.md).

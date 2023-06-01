@@ -1,0 +1,1 @@
+v . -o gitman -enable-globals

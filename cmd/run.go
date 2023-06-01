@@ -20,13 +20,13 @@ var runCmd = &cobra.Command{
 			return
 		}
 
-		// Run a command alias on all groups passed
+		// Run a command alias on a collection of repos
 		for _, command := range args {
-			for _, group := range Config.Repositories {
+			for _, repo := range Config.Repositories {
 				run := Config.Commands[command]
 				cs := strings.Split(run, " ")
 				c := exec.Command(cs[0], cs[1:]...)
-				c.Dir = group
+				c.Dir = repo
 				stdout, err := c.Output()
 				if err != nil {
 					log.Errorf("could not run process: %v\n", err)

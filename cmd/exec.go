@@ -21,9 +21,9 @@ var execCmd = &cobra.Command{
 		}
 
 		// Execute single command directly on provided groups
-		for _, group := range Config.Repositories {
+		for _, repo := range Config.Repositories {
 			c := exec.Command(args[0], args[1:]...)
-			c.Dir = group
+			c.Dir = repo
 			stdout, err := c.Output()
 			if err != nil {
 				log.Errorf("could not run process: %v\n", err)
